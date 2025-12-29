@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Untukmu</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #cfe9ff, #f8f9f6);
+      font-family: 'Inter', sans-serif;
+      color: #2f3e46;
+    }
+
+    .card {
+      max-width: 760px;
+      background: rgba(255, 255, 255, 0.88);
+      padding: 48px;
+      border-radius: 24px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+      animation: fadeIn 1.4s ease;
+      position: relative;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+      font-size: 34px;
+      margin-bottom: 28px;
+      letter-spacing: 0.5px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.9;
+      margin-bottom: 18px;
+    }
+
+    footer {
+      margin-top: 36px;
+      text-align: center;
+      font-size: 14px;
+      color: #6b7c85;
+    }
+
+    .hint {
+      position: absolute;
+      top: -18px;
+      right: 24px;
+      font-size: 12px;
+      color: #ffffff;
+      background: #6fa8dc;
+      padding: 8px 14px;
+      border-radius: 20px;
+      opacity: 0.9;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 32px 24px;
+      }
+      h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="hint">tap sekali 🎵</div>
+
+    <h1>Untukmu</h1>
+
+    <p>
+      aku memang mencintaimu, Perasaanku padamu bukan sekedar singgah lalu pergi.
+      ia tumbuh dengan jujur, dan aku tak pernah menyesal menjaganya selama ini.
+    </p>
+
+    <p>
+      Namun, ada hal-hal yang tak bisa ku paksa berjalan sesuai keinginanku.
+      Karena itu, aku memilih menyadarkan rasa ini pada Dia Dzat pemberi
+      sebaik-baiknya penjagaan.
+    </p>
+
+    <p>
+      Jika nanti, di masa depan Allah mempertemukan kita kembali,
+      aku ingin pertemuan itu datang dengan cara yang paling indah,
+      dengan hati yang lebih dewasa dan dengan taqdir yang tak lagi membuat kita ragu.
+    </p>
+
+    <p>
+      Tapi jika Allah menulis cerita kita berbeda,
+      ketahuilah kehadiranmu pernah menjadi doa
+      yang paling lembut dalam hidupku.
+    </p>
+
+    <footer>
+      ditulis dengan tenang, tanpa tuntutan
+    </footer>
+  </div>
+
+  <!-- AUDIO -->
+  <audio id="music" loop>
+    <source src="lagu.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const music = document.getElementById("music");
+    let started = false;
+
+    document.body.addEventListener("click", () => {
+      if (!started) {
+        music.volume = 0;
+        music.play();
+
+        let vol = 0;
+        const fade = setInterval(() => {
+          if (vol < 0.4) {
+            vol += 0.01;
+            music.volume = vol;
+          } else {
+            clearInterval(fade);
+          }
+        }, 200);
+
+        started = true;
+      }
+    });
+  </script>
+
+</body>
+</html>
